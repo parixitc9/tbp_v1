@@ -1,209 +1,109 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Concerts — The Brown Print</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* ============ NEON CONCERT THEME ============ */
+    /* ============================================================
+       CONCERT THEME — "CUT // RAW" acid palette
+       60% charcoal · 30% silver · 10% acid yellow
+       ============================================================ */
     :root {
-      --neon-cyan: #22d3ee;
-      --neon-magenta: #f0f;
-      --neon-pink: #ff2d95;
-      --neon-purple: #a855f7;
+      --acid: #d4ff00;       /* 10% accent */
+      --silver: #8c92ac;     /* 30% secondary */
+      --charcoal: #0a0a0c;   /* 60% base */
+      --funky: 'Courier New', Courier, monospace;
+      --whip: cubic-bezier(0.8, 0, 0.2, 1);
     }
+    body.concert-page { background: var(--charcoal); }
 
-    body.concert-page {
-      background: #05010a;
-    }
-
+    /* ---- HERO ---- */
     .con-hero {
-      position: relative;
-      padding: 11rem 1.5rem 6rem;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(34, 211, 238, 0.12), transparent 45%),
-        radial-gradient(circle at 80% 30%, rgba(255, 45, 149, 0.14), transparent 45%),
-        linear-gradient(to bottom, #05010a, #0a0414 60%, #05010a);
+      position: relative; padding: 11rem 1.5rem 6rem; overflow: hidden;
+      background: linear-gradient(45deg, #0a0a0c 40%, #16161f 100%);
     }
-
-    /* subtle neon grid floor */
-    .con-hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(34, 211, 238, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 45, 149, 0.07) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: linear-gradient(to bottom, transparent 40%, #000 100%);
-      -webkit-mask-image: linear-gradient(to bottom, transparent 40%, #000 100%);
-    }
-
-    .con-beams {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      opacity: 0.7;
-    }
-
+    .con-beams { position: absolute; inset: 0; overflow: hidden; opacity: 0.6; }
     .con-beam {
-      position: absolute;
-      top: 0;
-      transform-origin: top;
-      width: 2px;
-      height: 65%;
+      position: absolute; top: 0; transform-origin: top; width: 2px; height: 65%;
       filter: blur(6px);
     }
-
-    .con-hero .page-hero-inner {
-      position: relative;
-      z-index: 2;
-    }
+    .con-hero .page-hero-inner { position: relative; z-index: 2; }
 
     .con-kicker {
-      color: var(--neon-cyan);
-      text-shadow: 0 0 8px rgba(34, 211, 238, 0.8), 0 0 20px rgba(34, 211, 238, 0.4);
+      color: var(--acid); font-family: var(--funky);
+      text-shadow: 0 0 10px rgba(212,255,0,0.55);
     }
-
-    .con-divider {
-      background: var(--neon-cyan);
-      box-shadow: 0 0 8px var(--neon-cyan);
-    }
-
+    .con-divider { background: var(--acid); box-shadow: 0 0 8px var(--acid); }
     .con-hero h1 {
-      color: #fff;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 30px rgba(34, 211, 238, 0.3);
+      color: #f0f0f0; text-transform: uppercase; letter-spacing: -2px;
     }
-
     .con-hero h1 .accent {
-      color: var(--neon-pink);
-      font-style: italic;
-      text-shadow: 0 0 12px rgba(255, 45, 149, 0.9), 0 0 34px rgba(255, 45, 149, 0.6), 0 0 60px rgba(255, 45, 149, 0.3);
-      animation: flicker 4s infinite;
+      color: var(--acid); font-style: normal;
+      text-shadow: 0 0 14px rgba(212,255,0,0.7), 0 0 40px rgba(212,255,0,0.3);
     }
+    .con-hero p { color: var(--silver); }
 
-    .con-hero p {
-      color: #c9b8e0;
-    }
+    .con-label { color: var(--acid); font-family: var(--funky); }
 
-    .con-label {
-      color: var(--neon-cyan);
-      text-shadow: 0 0 8px rgba(34, 211, 238, 0.7);
-    }
-
-    /* neon work cards */
-    body.concert-page .work-section {
-      background: #05010a;
-    }
-
+    /* ---- WORK GRID (acid neon cards) ---- */
+    body.concert-page .work-section { background: var(--charcoal); }
     body.concert-page .work-card {
-      border: 1px solid rgba(34, 211, 238, 0.35);
-      box-shadow: 0 0 0 rgba(34, 211, 238, 0);
-      transition: box-shadow .35s, border-color .35s, transform .35s;
+      border: 1px solid rgba(140,146,172,0.3);
+      transition: border-color .35s var(--whip), box-shadow .35s, transform .35s var(--whip);
     }
-
     body.concert-page .work-card:hover {
-      border-color: var(--neon-pink);
-      box-shadow: 0 0 18px rgba(255, 45, 149, 0.45), inset 0 0 24px rgba(34, 211, 238, 0.12);
-      transform: translateY(-3px);
+      border-color: var(--acid);
+      box-shadow: 0 0 18px rgba(212,255,0,0.4), inset 0 0 24px rgba(212,255,0,0.06);
+      transform: skewX(-1.5deg) translateY(-3px);
     }
-
     body.concert-page .work-card-caption h3 {
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.9), 0 0 14px rgba(34, 211, 238, 0.4);
+      font-family: var(--funky); color: var(--acid);
+      text-shadow: 0 0 10px rgba(0,0,0,0.9);
     }
-
+    body.concert-page .work-card-caption .meta,
+    body.concert-page .work-card-caption .sub { color: var(--silver); }
     body.concert-page .play-btn {
-      background: transparent;
-      color: var(--neon-cyan);
-      border: 2px solid var(--neon-cyan);
-      box-shadow: 0 0 12px rgba(34, 211, 238, 0.7), inset 0 0 10px rgba(34, 211, 238, 0.3);
+      background: transparent; color: var(--acid);
+      border: 2px solid var(--acid);
+      box-shadow: 0 0 12px rgba(212,255,0,0.6), inset 0 0 10px rgba(212,255,0,0.25);
     }
-
     body.concert-page .work-card:hover .play-btn {
-      color: var(--neon-pink);
-      border-color: var(--neon-pink);
-      box-shadow: 0 0 16px rgba(255, 45, 149, 0.8), inset 0 0 12px rgba(255, 45, 149, 0.35);
+      background: var(--acid); color: var(--charcoal);
+      box-shadow: 0 0 20px rgba(212,255,0,0.85);
     }
 
-    /* neon CTA */
-    .con-cta {
-      background:
-        radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.18), transparent 60%),
-        linear-gradient(to bottom, #05010a, #0a0414);
+    /* ---- ACID TICKER (from CUT // RAW) ---- */
+    .con-ticker {
+      background: var(--acid); color: var(--charcoal);
+      padding: 1rem 0; overflow: hidden; white-space: nowrap;
+      transform: rotate(-2deg) scale(1.05); margin: 4rem 0;
+    }
+    .con-ticker-text {
+      display: inline-block; font-family: var(--funky); font-weight: bold;
+      font-size: 2.5rem; text-transform: uppercase; animation: ticker 18s linear infinite;
+    }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ---- CTA ---- */
+    .con-cta { background: linear-gradient(to bottom, var(--charcoal), #050506); }
+    .con-cta h2 { color: #f0f0f0; text-transform: uppercase; letter-spacing: -1px; }
+    .con-cta p { color: var(--silver); }
+    .con-icon { color: var(--acid); filter: drop-shadow(0 0 8px rgba(212,255,0,0.7)); }
+    .btn-acid {
+      background: transparent; color: var(--acid); border: 2px solid var(--acid);
+      font-family: var(--funky); font-weight: bold; transition: all .4s var(--whip);
+    }
+    .btn-acid:hover {
+      background: var(--acid); color: var(--charcoal);
+      transform: skewX(-10deg) scale(1.05);
     }
 
-    .con-cta h2 {
-      color: #fff;
-      text-shadow: 0 0 12px rgba(34, 211, 238, 0.5), 0 0 40px rgba(255, 45, 149, 0.3);
-    }
-
-    .con-cta p {
-      color: #c9b8e0;
-    }
-
-    .con-icon {
-      color: var(--neon-cyan);
-      filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.8));
-    }
-
-    .btn-neon {
-      background: transparent;
-      color: var(--neon-cyan);
-      border: 2px solid var(--neon-cyan);
-      box-shadow: 0 0 14px rgba(34, 211, 238, 0.5), inset 0 0 14px rgba(34, 211, 238, 0.15);
-      transition: all .3s;
-    }
-
-    .btn-neon:hover {
-      color: #05010a;
-      background: var(--neon-cyan);
-      box-shadow: 0 0 24px rgba(34, 211, 238, 0.9);
-      transform: scale(1.05);
-    }
-
-    @keyframes flicker {
-
-      0%,
-      19%,
-      21%,
-      23%,
-      25%,
-      54%,
-      56%,
-      100% {
-        opacity: 1;
-      }
-
-      20%,
-      22%,
-      24%,
-      55% {
-        opacity: 0.55;
-      }
-    }
-
-    @keyframes neonbeam {
-
-      0%,
-      100% {
-        opacity: 0.7;
-      }
-
-      50% {
-        opacity: 0.2;
-      }
-    }
-
-    .neonbeam {
-      animation: neonbeam 2.4s ease-in-out infinite;
-    }
+    @keyframes acidbeam { 0%,100% { opacity: 0.6; } 50% { opacity: 0.18; } }
+    .acidbeam { animation: acidbeam 2.4s ease-in-out infinite; }
   </style>
 </head>
-
 <body data-theme="concerts" class="concert-page">
   <div class="grain"></div>
 
@@ -219,10 +119,7 @@
         <button class="nav-cta" onclick="openProject('concert')">Start a Project</button>
       </div>
       <button class="nav-burger" aria-label="Menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round">
-          <path d="M3 12h18M3 6h18M3 18h18" />
-        </svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
       </button>
     </div>
     <div class="nav-mobile">
@@ -234,7 +131,7 @@
     </div>
   </nav>
 
-  <!-- ============ NEON HERO ============ -->
+  <!-- ============ HERO ============ -->
   <section class="con-hero">
     <div class="con-beams" id="conBeams"></div>
     <div class="page-hero-inner">
@@ -244,8 +141,7 @@
         <div class="divider-line con-divider"></div>
       </div>
       <h1 class="serif">Feel the <span class="accent">roar</span></h1>
-      <p>Multi-cam live concert films that capture the energy, the lights, and the crowd — exactly as it felt in the
-        room.</p>
+      <p>Multi-cam live concert films that capture the energy, the lights, and the crowd — exactly as it felt in the room.</p>
     </div>
   </section>
 
@@ -253,33 +149,27 @@
   <section class="work-section">
     <div class="wrap">
       <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:2rem;">
-        <span class="con-label"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
-            <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3" />
-          </svg></span>
+        <span class="con-label"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg></span>
         <span class="work-label con-label">Live Films</span>
       </div>
       <div class="work-grid" id="concertGrid"></div>
     </div>
   </section>
 
+  <!-- ============ ACID TICKER ============ -->
+  <section class="con-ticker">
+    <div class="con-ticker-text" id="conTicker"></div>
+  </section>
+
   <!-- ============ CTA ============ -->
   <section class="cta con-cta">
     <span class="con-icon" style="display:inline-flex;margin-bottom:1.25rem;">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
-        <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3" />
-      </svg>
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg>
     </span>
     <h2 class="serif">Got a show coming up?</h2>
     <p>Let us capture your live energy with a multi-cam crew and a dynamic, synced edit.</p>
-    <button class="btn btn-neon" onclick="openProject('concert')">
-      Start a Concert Project <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M5 12h14M12 5l7 7-7 7" />
-      </svg>
+    <button class="btn btn-acid" onclick="openProject('concert')">
+      Start a Concert Project <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </button>
   </section>
 
@@ -299,47 +189,38 @@
         </div>
         <div class="footer-col">
           <h4>Get in touch</h4>
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="2" y="4" width="20" height="16" rx="2" />
-              <path d="m22 7-10 5L2 7" />
-            </svg> hello@thebrownprint.ca</span>
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path
-                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" />
-            </svg> +1 (416) 555-0199</span>
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-              <circle cx="12" cy="10" r="3" />
-            </svg> Toronto, Canada</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg> hello@thebrownprint.ca</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg> +1 (416) 555-0199</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Toronto, Canada</span>
         </div>
       </div>
       <div class="footer-bottom">
-        <button class="btn btn-amber" onclick="openProject()">Start a Project <svg width="16" height="16"
-            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg></button>
+        <button class="btn btn-amber" onclick="openProject()">Start a Project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
         <p class="copy">© 2026 The Brown Print · Crafted with intention</p>
       </div>
     </div>
   </footer>
 
-  <!-- neon stage-light beams (alternating cyan / magenta) -->
+  <!-- acid stage-light beams + ticker text -->
   <script>
     (function () {
       const wrap = document.getElementById("conBeams");
-      if (!wrap) return;
-      const colors = ["#22d3ee", "#ff2d95", "#a855f7", "#22d3ee", "#ff2d95"];
-      for (let i = 0; i < 5; i++) {
-        const b = document.createElement("div");
-        b.className = "con-beam neonbeam";
-        const c = colors[i];
-        b.style.left = (12 + i * 19) + "%";
-        b.style.transform = "rotate(" + (-18 + i * 9) + "deg)";
-        b.style.background = "linear-gradient(to bottom, " + c + ", transparent)";
-        b.style.boxShadow = "0 0 16px " + c;
-        b.style.animationDuration = (2 + i * 0.4) + "s";
-        wrap.appendChild(b);
+      if (wrap) {
+        for (let i = 0; i < 5; i++) {
+          const b = document.createElement("div");
+          b.className = "con-beam acidbeam";
+          b.style.left = (12 + i * 19) + "%";
+          b.style.transform = "rotate(" + (-18 + i * 9) + "deg)";
+          b.style.background = "linear-gradient(to bottom, #d4ff00, transparent)";
+          b.style.boxShadow = "0 0 16px #d4ff00";
+          b.style.animationDuration = (2 + i * 0.4) + "s";
+          wrap.appendChild(b);
+        }
+      }
+      const ticker = document.getElementById("conTicker");
+      if (ticker) {
+        const line = "LIVE ENERGY • MULTI-CAM • NO DROPPED FRAMES • SYNCED EDIT • ";
+        ticker.textContent = line.repeat(4);
       }
     })();
   </script>
@@ -347,5 +228,4 @@
   <script src="js/player.js"></script>
   <script src="js/main.js"></script>
 </body>
-
 </html>

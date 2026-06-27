@@ -1,30 +1,209 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Concerts — The Brown Print</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* page-local: concert theme */
-    .con-hero { position: relative; padding: 10rem 1.5rem 5rem; overflow: hidden;
-      background: linear-gradient(to bottom, #0c0a09, rgba(127,29,29,0.4), #0c0a09); }
-    .con-hero .glow { position:absolute; inset:0;
-      background: radial-gradient(circle at 50% 30%, rgba(249,115,22,0.22), transparent 55%); }
-    .con-beams { position: absolute; inset: 0; overflow: hidden; opacity: 0.4; }
-    .con-beam { position: absolute; top: 0; transform-origin: top; width: 2px; height: 60%;
-      background: linear-gradient(to bottom, rgba(249,115,22,0.6), transparent); filter: blur(8px); }
-    .con-hero h1 { color: var(--stone-50); }
-    .con-hero h1 .accent { color: var(--orange-500); font-style: italic; }
-    .con-hero p { color: var(--stone-400); }
-    .con-label { color: var(--orange-400); }
-    .con-cta { background: linear-gradient(to bottom, #0c0a09, rgba(127,29,29,0.3)); }
-    .con-cta h2 { color: var(--stone-50); }
-    .con-cta p { color: var(--stone-400); }
-    body.concert-page .play-btn { background: var(--orange-500); color: #fff; }
-    body.concert-page .work-card { border-color: rgba(249,115,22,0.2); }
+    /* ============ NEON CONCERT THEME ============ */
+    :root {
+      --neon-cyan: #22d3ee;
+      --neon-magenta: #f0f;
+      --neon-pink: #ff2d95;
+      --neon-purple: #a855f7;
+    }
+
+    body.concert-page {
+      background: #05010a;
+    }
+
+    .con-hero {
+      position: relative;
+      padding: 11rem 1.5rem 6rem;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(34, 211, 238, 0.12), transparent 45%),
+        radial-gradient(circle at 80% 30%, rgba(255, 45, 149, 0.14), transparent 45%),
+        linear-gradient(to bottom, #05010a, #0a0414 60%, #05010a);
+    }
+
+    /* subtle neon grid floor */
+    .con-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(34, 211, 238, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 45, 149, 0.07) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, transparent 40%, #000 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 40%, #000 100%);
+    }
+
+    .con-beams {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      opacity: 0.7;
+    }
+
+    .con-beam {
+      position: absolute;
+      top: 0;
+      transform-origin: top;
+      width: 2px;
+      height: 65%;
+      filter: blur(6px);
+    }
+
+    .con-hero .page-hero-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .con-kicker {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 8px rgba(34, 211, 238, 0.8), 0 0 20px rgba(34, 211, 238, 0.4);
+    }
+
+    .con-divider {
+      background: var(--neon-cyan);
+      box-shadow: 0 0 8px var(--neon-cyan);
+    }
+
+    .con-hero h1 {
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 30px rgba(34, 211, 238, 0.3);
+    }
+
+    .con-hero h1 .accent {
+      color: var(--neon-pink);
+      font-style: italic;
+      text-shadow: 0 0 12px rgba(255, 45, 149, 0.9), 0 0 34px rgba(255, 45, 149, 0.6), 0 0 60px rgba(255, 45, 149, 0.3);
+      animation: flicker 4s infinite;
+    }
+
+    .con-hero p {
+      color: #c9b8e0;
+    }
+
+    .con-label {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 8px rgba(34, 211, 238, 0.7);
+    }
+
+    /* neon work cards */
+    body.concert-page .work-section {
+      background: #05010a;
+    }
+
+    body.concert-page .work-card {
+      border: 1px solid rgba(34, 211, 238, 0.35);
+      box-shadow: 0 0 0 rgba(34, 211, 238, 0);
+      transition: box-shadow .35s, border-color .35s, transform .35s;
+    }
+
+    body.concert-page .work-card:hover {
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 18px rgba(255, 45, 149, 0.45), inset 0 0 24px rgba(34, 211, 238, 0.12);
+      transform: translateY(-3px);
+    }
+
+    body.concert-page .work-card-caption h3 {
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.9), 0 0 14px rgba(34, 211, 238, 0.4);
+    }
+
+    body.concert-page .play-btn {
+      background: transparent;
+      color: var(--neon-cyan);
+      border: 2px solid var(--neon-cyan);
+      box-shadow: 0 0 12px rgba(34, 211, 238, 0.7), inset 0 0 10px rgba(34, 211, 238, 0.3);
+    }
+
+    body.concert-page .work-card:hover .play-btn {
+      color: var(--neon-pink);
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 16px rgba(255, 45, 149, 0.8), inset 0 0 12px rgba(255, 45, 149, 0.35);
+    }
+
+    /* neon CTA */
+    .con-cta {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.18), transparent 60%),
+        linear-gradient(to bottom, #05010a, #0a0414);
+    }
+
+    .con-cta h2 {
+      color: #fff;
+      text-shadow: 0 0 12px rgba(34, 211, 238, 0.5), 0 0 40px rgba(255, 45, 149, 0.3);
+    }
+
+    .con-cta p {
+      color: #c9b8e0;
+    }
+
+    .con-icon {
+      color: var(--neon-cyan);
+      filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.8));
+    }
+
+    .btn-neon {
+      background: transparent;
+      color: var(--neon-cyan);
+      border: 2px solid var(--neon-cyan);
+      box-shadow: 0 0 14px rgba(34, 211, 238, 0.5), inset 0 0 14px rgba(34, 211, 238, 0.15);
+      transition: all .3s;
+    }
+
+    .btn-neon:hover {
+      color: #05010a;
+      background: var(--neon-cyan);
+      box-shadow: 0 0 24px rgba(34, 211, 238, 0.9);
+      transform: scale(1.05);
+    }
+
+    @keyframes flicker {
+
+      0%,
+      19%,
+      21%,
+      23%,
+      25%,
+      54%,
+      56%,
+      100% {
+        opacity: 1;
+      }
+
+      20%,
+      22%,
+      24%,
+      55% {
+        opacity: 0.55;
+      }
+    }
+
+    @keyframes neonbeam {
+
+      0%,
+      100% {
+        opacity: 0.7;
+      }
+
+      50% {
+        opacity: 0.2;
+      }
+    }
+
+    .neonbeam {
+      animation: neonbeam 2.4s ease-in-out infinite;
+    }
   </style>
 </head>
+
 <body data-theme="concerts" class="concert-page">
   <div class="grain"></div>
 
@@ -40,7 +219,10 @@
         <button class="nav-cta" onclick="openProject('concert')">Start a Project</button>
       </div>
       <button class="nav-burger" aria-label="Menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round">
+          <path d="M3 12h18M3 6h18M3 18h18" />
+        </svg>
       </button>
     </div>
     <div class="nav-mobile">
@@ -52,18 +234,18 @@
     </div>
   </nav>
 
-  <!-- ============ PAGE HERO (with stage lights) ============ -->
+  <!-- ============ NEON HERO ============ -->
   <section class="con-hero">
-    <div class="glow"></div>
     <div class="con-beams" id="conBeams"></div>
     <div class="page-hero-inner">
       <div class="divider-row">
-        <div class="divider-line" style="background:rgba(249,115,22,0.4);"></div>
-        <span class="kicker con-label">Concerts</span>
-        <div class="divider-line" style="background:rgba(249,115,22,0.4);"></div>
+        <div class="divider-line con-divider"></div>
+        <span class="kicker con-kicker">Concerts</span>
+        <div class="divider-line con-divider"></div>
       </div>
       <h1 class="serif">Feel the <span class="accent">roar</span></h1>
-      <p>Multi-cam live concert films that capture the energy, the lights, and the crowd — exactly as it felt in the room.</p>
+      <p>Multi-cam live concert films that capture the energy, the lights, and the crowd — exactly as it felt in the
+        room.</p>
     </div>
   </section>
 
@@ -71,7 +253,11 @@
   <section class="work-section">
     <div class="wrap">
       <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:2rem;">
-        <span class="con-label"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg></span>
+        <span class="con-label"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3" />
+          </svg></span>
         <span class="work-label con-label">Live Films</span>
       </div>
       <div class="work-grid" id="concertGrid"></div>
@@ -80,13 +266,20 @@
 
   <!-- ============ CTA ============ -->
   <section class="cta con-cta">
-    <span style="display:inline-flex;color:var(--orange-400);margin-bottom:1.25rem;">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg>
+    <span class="con-icon" style="display:inline-flex;margin-bottom:1.25rem;">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3" />
+      </svg>
     </span>
     <h2 class="serif">Got a show coming up?</h2>
     <p>Let us capture your live energy with a multi-cam crew and a dynamic, synced edit.</p>
-    <button class="btn btn-orange" onclick="openProject('concert')">
-      Start a Concert Project <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    <button class="btn btn-neon" onclick="openProject('concert')">
+      Start a Concert Project <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7" />
+      </svg>
     </button>
   </section>
 
@@ -106,34 +299,53 @@
         </div>
         <div class="footer-col">
           <h4>Get in touch</h4>
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg> hello@thebrownprint.ca</span>
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg> +1 (416) 555-0199</span>
-          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> Toronto, Canada</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="m22 7-10 5L2 7" />
+            </svg> hello@thebrownprint.ca</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" />
+            </svg> +1 (416) 555-0199</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg> Toronto, Canada</span>
         </div>
       </div>
       <div class="footer-bottom">
-        <button class="btn btn-amber" onclick="openProject()">Start a Project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        <button class="btn btn-amber" onclick="openProject()">Start a Project <svg width="16" height="16"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg></button>
         <p class="copy">© 2026 The Brown Print · Crafted with intention</p>
       </div>
     </div>
   </footer>
 
-  <!-- stage-light beams -->
+  <!-- neon stage-light beams (alternating cyan / magenta) -->
   <script>
     (function () {
       const wrap = document.getElementById("conBeams");
       if (!wrap) return;
+      const colors = ["#22d3ee", "#ff2d95", "#a855f7", "#22d3ee", "#ff2d95"];
       for (let i = 0; i < 5; i++) {
         const b = document.createElement("div");
-        b.className = "con-beam beam";
-        b.style.left = (15 + i * 18) + "%";
-        b.style.transform = "rotate(" + (-15 + i * 7) + "deg)";
+        b.className = "con-beam neonbeam";
+        const c = colors[i];
+        b.style.left = (12 + i * 19) + "%";
+        b.style.transform = "rotate(" + (-18 + i * 9) + "deg)";
+        b.style.background = "linear-gradient(to bottom, " + c + ", transparent)";
+        b.style.boxShadow = "0 0 16px " + c;
         b.style.animationDuration = (2 + i * 0.4) + "s";
         wrap.appendChild(b);
       }
     })();
   </script>
-  <script src="player.js"></script>
-  <script src="main.js"></script>
+  <script src="content.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/main.js"></script>
 </body>
+
 </html>

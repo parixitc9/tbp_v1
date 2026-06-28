@@ -73,17 +73,14 @@ const CONTENT = {
     { videoSrc: "media/music/music-6.mp4", poster: "media/music/music-6.jpg", title: "Velvet",              sub: "Studio Film · 4:33",   artist: "Noor Project" },
   ],
 
-  /* ---------- CONCERTS (videos) ----------
-     Using demo posters + sample videos so the page is populated now.
-     To use real files: drop them in media/concerts/ named concert-1.mp4,
-     concert-1.jpg, etc., then change the URLs below back to those paths. */
+  /* ---------- CONCERTS (videos) ---------- */
   concerts: [
-    { videoSrc: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4", poster: "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800&q=80", title: "Arena Live",         sub: "Full Concert Film · 8:40", venue: "Rogers Arena", tall: true },
-    { videoSrc: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",    poster: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&q=80", title: "Festival Mainstage", sub: "Highlights · 3:15",        venue: "Toronto Fest" },
-    { videoSrc: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",  poster: "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=800&q=80", title: "Acoustic Night",     sub: "Live Session · 4:50",      venue: "The Vault" },
-    { videoSrc: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",   poster: "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=800&q=80", title: "Bhangra Beats Live", sub: "Crowd Reel · 2:30",        venue: "Surrey Live", tall: true },
-    { videoSrc: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",       poster: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&q=80", title: "Encore",             sub: "Multi-cam Edit · 6:12",    venue: "Scotiabank" },
-    { videoSrc: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4", poster: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80", title: "Under Lights",       sub: "Tour Aftermovie · 5:45",   venue: "Cross-Canada Tour" },
+    { videoSrc: "media/concerts/concert-1.mp4", poster: "media/concerts/concert-1.jpg", title: "Arena Live",         sub: "Full Concert Film · 8:40", venue: "Rogers Arena", tall: true },
+    { videoSrc: "media/concerts/concert-2.mp4", poster: "media/concerts/concert-2.jpg", title: "Festival Mainstage", sub: "Highlights · 3:15",        venue: "Toronto Fest" },
+    { videoSrc: "media/concerts/concert-3.mp4", poster: "media/concerts/concert-3.jpg", title: "Acoustic Night",     sub: "Live Session · 4:50",      venue: "The Vault" },
+    { videoSrc: "media/concerts/concert-4.mp4", poster: "media/concerts/concert-4.jpg", title: "Bhangra Beats Live", sub: "Crowd Reel · 2:30",        venue: "Surrey Live", tall: true },
+    { videoSrc: "media/concerts/concert-5.mp4", poster: "media/concerts/concert-5.jpg", title: "Encore",             sub: "Multi-cam Edit · 6:12",    venue: "Scotiabank" },
+    { videoSrc: "media/concerts/concert-6.mp4", poster: "media/concerts/concert-6.jpg", title: "Under Lights",       sub: "Tour Aftermovie · 5:45",   venue: "Cross-Canada Tour" },
   ],
 
 };

@@ -18,6 +18,8 @@ or swap a photo, then re-upload. That's it.
   ├── wedding.html      ← Weddings page
   ├── music.html        ← Music Albums page
   ├── concerts.html     ← Concerts page
+  ├── social.html       ← Social Events page (birthdays, anniversaries)
+  ├── brands.html       ← Brands page (clubs, restaurants, real estate)
   ├── content.js        ← ★ YOU EDIT THIS for titles & captions
   ├── README.txt        ← this guide
   │
@@ -31,7 +33,9 @@ or swap a photo, then re-upload. That's it.
   └── media/            ← ★ YOU DROP YOUR PHOTOS & VIDEOS HERE
       ├── wedding/
       ├── music/
-      └── concerts/
+      ├── concerts/
+      ├── social/
+      └── brands/
 
   The two things you'll ever touch are marked with ★ :
   the "media" folder (your photos/videos) and "content.js" (the text).
@@ -87,6 +91,14 @@ or swap a photo, then re-upload. That's it.
   CONCERTS  (media/concerts/)
     Videos:   concert-1.mp4  to  concert-6.mp4
     Thumbs:   concert-1.jpg  to  concert-6.jpg
+
+  SOCIAL  (media/social/)
+    Videos:   social-1.mp4   to  social-6.mp4
+    Thumbs:   social-1.jpg   to  social-6.jpg
+
+  BRANDS  (media/brands/)
+    Videos:   brand-1.mp4    to  brand-6.mp4
+    Thumbs:   brand-1.jpg    to  brand-6.jpg
 
   WHAT IS A "THUMB" / POSTER?
     It's the still image shown on the tile BEFORE someone clicks

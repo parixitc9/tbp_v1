@@ -4,56 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Music Albums — The Brown Print</title>
+  <title>Brands — The Brown Print</title>
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    /* page-local: music theme */
-    .mus-hero {
-      background: linear-gradient(to bottom, #0c0a09, rgba(76, 29, 149, 0.4), #0c0a09);
-    }
-
-    .mus-hero .glow {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.2), transparent 60%);
-    }
-
-    .mus-hero h1 {
-      color: var(--stone-50);
-    }
-
-    .mus-hero p {
-      color: var(--stone-400);
-    }
-
-    .mus-label {
-      color: var(--violet-400);
-    }
-
-    .mus-cta {
-      background: linear-gradient(to bottom, #0c0a09, rgba(76, 29, 149, 0.3));
-    }
-
-    .mus-cta h2 {
-      color: var(--stone-50);
-    }
-
-    .mus-cta p {
-      color: var(--stone-400);
-    }
-
-    body.music-page .play-btn {
-      background: var(--violet-500);
-      color: #fff;
-    }
-
-    body.music-page .work-card {
-      border-color: rgba(139, 92, 246, 0.2);
-    }
-  </style>
 </head>
 
-<body data-theme="music" class="music-page">
+<body data-theme="brands" class="brands-page">
   <div class="grain"></div>
 
   <!-- ============ NAV ============ -->
@@ -63,11 +18,11 @@
       <div class="nav-links">
         <a href="index.html" class="nav-link">Home</a>
         <a href="wedding.html" class="nav-link">Weddings</a>
-        <a href="music.html" class="nav-link active">Music</a>
+        <a href="music.html" class="nav-link">Music</a>
         <a href="concerts.html" class="nav-link">Concerts</a>
         <a href="social.html" class="nav-link">Social</a>
-        <a href="brands.html" class="nav-link">Brands</a>
-        <button class="nav-cta" onclick="openProject('music')">Start a Project</button>
+        <a href="brands.html" class="nav-link active">Brands</a>
+        <button class="nav-cta" onclick="openProject('brand')">Start a Project</button>
       </div>
       <button class="nav-burger" aria-label="Menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -79,60 +34,63 @@
     <div class="nav-mobile">
       <a href="index.html" class="nav-link">Home</a>
       <a href="wedding.html" class="nav-link">Weddings</a>
-      <a href="music.html" class="nav-link active">Music</a>
+      <a href="music.html" class="nav-link">Music</a>
       <a href="concerts.html" class="nav-link">Concerts</a>
-        <a href="social.html" class="nav-link">Social</a>
-        <a href="brands.html" class="nav-link">Brands</a>
-      <button class="nav-cta" onclick="openProject('music')">Start a Project</button>
+      <a href="social.html" class="nav-link">Social</a>
+      <a href="brands.html" class="nav-link active">Brands</a>
+      <button class="nav-cta" onclick="openProject('brand')">Start a Project</button>
     </div>
   </nav>
 
   <!-- ============ PAGE HERO ============ -->
-  <section class="page-hero mus-hero">
+  <section class="page-hero brd-hero">
     <div class="glow"></div>
     <div class="page-hero-inner">
       <div class="divider-row">
-        <div class="divider-line" style="background:rgba(139,92,246,0.4);"></div>
-        <span class="kicker mus-label">Music Albums</span>
-        <div class="divider-line" style="background:rgba(139,92,246,0.4);"></div>
+        <div class="divider-line" style="background:rgba(212,178,95,0.4);"></div>
+        <span class="kicker brd-label">Brands</span>
+        <div class="divider-line" style="background:rgba(212,178,95,0.4);"></div>
       </div>
-      <h1 class="serif">Sound, made visible</h1>
-      <p>Concept-driven album visuals and music videos for artists who want their sound to be seen.</p>
+      <h1 class="serif">Films that sell the <span class="accent">feeling</span></h1>
+      <p>Commercial work for clubs, restaurants, and real estate — brand films, promos, and property tours crafted to
+        make your space impossible to scroll past.</p>
     </div>
   </section>
 
-  <!-- ============ PROJECTS GRID ============ -->
-  <section class="work-section">
+  <!-- ============ WORK GRID ============ -->
+  <section class="work-section brd-section">
     <div class="wrap">
       <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:2rem;">
-        <span class="mus-label"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2">
-            <circle cx="12" cy="12" r="10" />
-            <circle cx="12" cy="12" r="3" />
+        <span class="brd-label"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4" />
+            <path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01" />
           </svg></span>
-        <span class="work-label mus-label">Selected Projects</span>
+        <span class="work-label brd-label">Selected Clients</span>
       </div>
-      <div class="work-grid" id="musicGrid"></div>
+      <div class="work-grid" id="brandsGrid"></div>
     </div>
   </section>
 
-  <!-- ============ MARQUEE ============ -->
-  <section class="marquee">
-    <div class="marquee-track bebas" id="marqueeTrack"></div>
+  <!-- ============ CLIENT STRIP ============ -->
+  <section class="brd-strip">
+    <div class="brd-strip-track bebas" id="brdStrip"></div>
   </section>
 
   <!-- ============ CTA ============ -->
-  <section class="cta mus-cta">
-    <span style="display:inline-flex;color:var(--violet-400);margin-bottom:1.25rem;">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="10" />
-        <circle cx="12" cy="12" r="3" />
+  <section class="cta brd-cta">
+    <span style="display:inline-flex;color:var(--gold-400);margin-bottom:1.25rem;">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4" />
+        <path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01" />
       </svg>
     </span>
-    <h2 class="serif">Got a track to bring to life?</h2>
-    <p>From concept to colour grade, we turn your music into a visual world.</p>
-    <button class="btn btn-violet" onclick="openProject('music')">
-      Start a Music Project <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <h2 class="serif">Got a brand to bring to life?</h2>
+    <p>Whether it's a restaurant, a nightclub, or a new development, we'll craft a film that makes your audience stop and
+      look.</p>
+    <button class="btn btn-gold" onclick="openProject('brand')">
+      Start a Brand Project <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M5 12h14M12 5l7 7-7 7" />
       </svg>
@@ -182,11 +140,11 @@
     </div>
   </footer>
 
-  <!-- marquee content (tripled so it loops seamlessly) -->
+  <!-- client strip content (tripled so it loops seamlessly) -->
   <script>
     (function () {
-      const items = ["ALBUM VISUALS", "MUSIC VIDEOS", "LYRIC FILMS", "STUDIO SESSIONS"];
-      const track = document.getElementById("marqueeTrack");
+      const items = ["RESTAURANTS", "NIGHTCLUBS", "REAL ESTATE", "HOSPITALITY", "RETAIL"];
+      const track = document.getElementById("brdStrip");
       if (track) {
         const all = [...items, ...items, ...items];
         track.innerHTML = all.map(t => `<span>${t} ·</span>`).join("");

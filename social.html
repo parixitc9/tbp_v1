@@ -4,56 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Music Albums — The Brown Print</title>
+  <title>Social Events — The Brown Print</title>
   <link rel="stylesheet" href="css/style.css" />
-  <style>
-    /* page-local: music theme */
-    .mus-hero {
-      background: linear-gradient(to bottom, #0c0a09, rgba(76, 29, 149, 0.4), #0c0a09);
-    }
-
-    .mus-hero .glow {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.2), transparent 60%);
-    }
-
-    .mus-hero h1 {
-      color: var(--stone-50);
-    }
-
-    .mus-hero p {
-      color: var(--stone-400);
-    }
-
-    .mus-label {
-      color: var(--violet-400);
-    }
-
-    .mus-cta {
-      background: linear-gradient(to bottom, #0c0a09, rgba(76, 29, 149, 0.3));
-    }
-
-    .mus-cta h2 {
-      color: var(--stone-50);
-    }
-
-    .mus-cta p {
-      color: var(--stone-400);
-    }
-
-    body.music-page .play-btn {
-      background: var(--violet-500);
-      color: #fff;
-    }
-
-    body.music-page .work-card {
-      border-color: rgba(139, 92, 246, 0.2);
-    }
-  </style>
 </head>
 
-<body data-theme="music" class="music-page">
+<body data-theme="social" class="social-page">
   <div class="grain"></div>
 
   <!-- ============ NAV ============ -->
@@ -63,11 +18,11 @@
       <div class="nav-links">
         <a href="index.html" class="nav-link">Home</a>
         <a href="wedding.html" class="nav-link">Weddings</a>
-        <a href="music.html" class="nav-link active">Music</a>
+        <a href="music.html" class="nav-link">Music</a>
         <a href="concerts.html" class="nav-link">Concerts</a>
-        <a href="social.html" class="nav-link">Social</a>
+        <a href="social.html" class="nav-link active">Social</a>
         <a href="brands.html" class="nav-link">Brands</a>
-        <button class="nav-cta" onclick="openProject('music')">Start a Project</button>
+        <button class="nav-cta" onclick="openProject('social')">Start a Project</button>
       </div>
       <button class="nav-burger" aria-label="Menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -79,60 +34,64 @@
     <div class="nav-mobile">
       <a href="index.html" class="nav-link">Home</a>
       <a href="wedding.html" class="nav-link">Weddings</a>
-      <a href="music.html" class="nav-link active">Music</a>
+      <a href="music.html" class="nav-link">Music</a>
       <a href="concerts.html" class="nav-link">Concerts</a>
-        <a href="social.html" class="nav-link">Social</a>
-        <a href="brands.html" class="nav-link">Brands</a>
-      <button class="nav-cta" onclick="openProject('music')">Start a Project</button>
+      <a href="social.html" class="nav-link active">Social</a>
+      <a href="brands.html" class="nav-link">Brands</a>
+      <button class="nav-cta" onclick="openProject('social')">Start a Project</button>
     </div>
   </nav>
 
   <!-- ============ PAGE HERO ============ -->
-  <section class="page-hero mus-hero">
+  <section class="page-hero soc-hero">
     <div class="glow"></div>
     <div class="page-hero-inner">
       <div class="divider-row">
-        <div class="divider-line" style="background:rgba(139,92,246,0.4);"></div>
-        <span class="kicker mus-label">Music Albums</span>
-        <div class="divider-line" style="background:rgba(139,92,246,0.4);"></div>
+        <div class="divider-line" style="background:rgba(13,148,136,0.4);"></div>
+        <span class="kicker soc-label">Social Events</span>
+        <div class="divider-line" style="background:rgba(13,148,136,0.4);"></div>
       </div>
-      <h1 class="serif">Sound, made visible</h1>
-      <p>Concept-driven album visuals and music videos for artists who want their sound to be seen.</p>
+      <h1 class="serif">Every <span class="accent">celebration</span>, captured</h1>
+      <p>Birthdays, anniversaries, engagements and family milestones — joyful films and photos that hold the warmth of
+        the day for years to come.</p>
     </div>
   </section>
 
-  <!-- ============ PROJECTS GRID ============ -->
-  <section class="work-section">
+  <!-- ============ EVENTS GRID ============ -->
+  <section class="work-section soc-section">
     <div class="wrap">
       <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:2rem;">
-        <span class="mus-label"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2">
-            <circle cx="12" cy="12" r="10" />
-            <circle cx="12" cy="12" r="3" />
+        <span class="soc-label"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5.8 11.3 2 22l10.7-3.79" />
+            <path d="M4 3h.01M22 8h.01M15 2h.01M22 20h.01" />
+            <path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L12 14l4.5 4.5 4.04-1.95c.84-.16 1.44-.9 1.44-1.76v-.38c0-.88.77-1.55 1.63-1.45a2.9 2.9 0 0 0 3.12-1.96L22 2Z" />
           </svg></span>
-        <span class="work-label mus-label">Selected Projects</span>
+        <span class="work-label soc-label">Recent Celebrations</span>
       </div>
-      <div class="work-grid" id="musicGrid"></div>
+      <div class="work-grid" id="socialGrid"></div>
     </div>
   </section>
 
-  <!-- ============ MARQUEE ============ -->
-  <section class="marquee">
-    <div class="marquee-track bebas" id="marqueeTrack"></div>
+  <!-- ============ CONFETTI MARQUEE ============ -->
+  <section class="soc-confetti">
+    <div class="soc-confetti-track bebas" id="socConfetti"></div>
   </section>
 
   <!-- ============ CTA ============ -->
-  <section class="cta mus-cta">
-    <span style="display:inline-flex;color:var(--violet-400);margin-bottom:1.25rem;">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="12" cy="12" r="10" />
-        <circle cx="12" cy="12" r="3" />
+  <section class="cta soc-cta">
+    <span style="display:inline-flex;color:var(--coral-500);margin-bottom:1.25rem;">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5.8 11.3 2 22l10.7-3.79" />
+        <path d="M4 3h.01M22 8h.01M15 2h.01M22 20h.01" />
+        <path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L12 14l4.5 4.5 4.04-1.95c.84-.16 1.44-.9 1.44-1.76v-.38c0-.88.77-1.55 1.63-1.45a2.9 2.9 0 0 0 3.12-1.96L22 2Z" />
       </svg>
     </span>
-    <h2 class="serif">Got a track to bring to life?</h2>
-    <p>From concept to colour grade, we turn your music into a visual world.</p>
-    <button class="btn btn-violet" onclick="openProject('music')">
-      Start a Music Project <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    <h2 class="serif">Got something to celebrate?</h2>
+    <p>From a first birthday to a golden anniversary, let us turn your special day into a film you'll replay for years.</p>
+    <button class="btn btn-teal" onclick="openProject('social')">
+      Start a Social Project <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M5 12h14M12 5l7 7-7 7" />
       </svg>
@@ -182,11 +141,11 @@
     </div>
   </footer>
 
-  <!-- marquee content (tripled so it loops seamlessly) -->
+  <!-- confetti marquee content (tripled so it loops seamlessly) -->
   <script>
     (function () {
-      const items = ["ALBUM VISUALS", "MUSIC VIDEOS", "LYRIC FILMS", "STUDIO SESSIONS"];
-      const track = document.getElementById("marqueeTrack");
+      const items = ["BIRTHDAYS", "ANNIVERSARIES", "ENGAGEMENTS", "GRADUATIONS", "FAMILY PARTIES"];
+      const track = document.getElementById("socConfetti");
       if (track) {
         const all = [...items, ...items, ...items];
         track.innerHTML = all.map(t => `<span>${t} ·</span>`).join("");

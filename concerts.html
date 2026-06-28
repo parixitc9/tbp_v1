@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Concerts — The Brown Print</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <style>
     /* ============================================================
        CONCERT THEME — "CUT // RAW" acid palette
@@ -102,6 +102,81 @@
 
     @keyframes acidbeam { 0%,100% { opacity: 0.6; } 50% { opacity: 0.18; } }
     .acidbeam { animation: acidbeam 2.4s ease-in-out infinite; }
+
+    /* ============================================================
+       NEON NAV — override the shared concerts theme (orange) so the
+       nav matches this page's acid-yellow neon look.
+       Scoped to .concert-page so the shared stylesheet is untouched.
+       ============================================================ */
+    body.concert-page .nav-logo {
+      color: var(--acid);
+      text-shadow: 0 0 10px rgba(212,255,0,0.45);
+    }
+    body.concert-page .nav-link { color: var(--silver); font-family: var(--funky); }
+    body.concert-page .nav-link.active,
+    body.concert-page .nav-link:hover {
+      color: var(--acid);
+      text-shadow: 0 0 8px rgba(212,255,0,0.6);
+    }
+    /* solid (scrolled) bar: charcoal with an acid hairline */
+    body.concert-page .nav.solid {
+      background: rgba(10,10,12,0.92);
+      border-color: rgba(212,255,0,0.25);
+    }
+    /* nav CTA + mobile bg */
+    body.concert-page .nav-cta {
+      background: transparent;
+      color: var(--acid);
+      border: 2px solid var(--acid);
+      font-family: var(--funky); font-weight: bold;
+      box-shadow: 0 0 10px rgba(212,255,0,0.4), inset 0 0 8px rgba(212,255,0,0.15);
+    }
+    body.concert-page .nav-cta:hover {
+      background: var(--acid); color: var(--charcoal);
+      box-shadow: 0 0 18px rgba(212,255,0,0.8);
+      transform: skewX(-6deg) scale(1.05);
+    }
+    body.concert-page .nav-burger { color: var(--acid); }
+    body.concert-page .nav-mobile {
+      background: rgba(10,10,12,0.96);
+      border-top: 1px solid rgba(212,255,0,0.25);
+    }
+
+    /* ============================================================
+       NEON FOOTER — recolour the shared dark footer to acid neon.
+       ============================================================ */
+    body.concert-page .footer {
+      background: var(--charcoal);
+      border-top: 1px solid rgba(212,255,0,0.25);
+    }
+    body.concert-page .footer-logo {
+      color: var(--acid);
+      text-shadow: 0 0 10px rgba(212,255,0,0.4);
+    }
+    body.concert-page .footer h4 {
+      color: var(--acid); font-family: var(--funky);
+    }
+    body.concert-page .footer p,
+    body.concert-page .footer-col a,
+    body.concert-page .footer-col span { color: var(--silver); }
+    body.concert-page .footer-col a:hover {
+      color: var(--acid);
+      text-shadow: 0 0 8px rgba(212,255,0,0.6);
+    }
+    body.concert-page .footer-bottom { border-top-color: rgba(212,255,0,0.18); }
+    body.concert-page .footer-bottom .copy { color: var(--silver); }
+    /* footer "Start a Project" button → acid outline to match the page */
+    body.concert-page .footer .btn-amber {
+      background: transparent; color: var(--acid);
+      border: 2px solid var(--acid);
+      font-family: var(--funky); font-weight: bold;
+      box-shadow: 0 0 10px rgba(212,255,0,0.4);
+    }
+    body.concert-page .footer .btn-amber:hover {
+      background: var(--acid); color: var(--charcoal);
+      box-shadow: 0 0 18px rgba(212,255,0,0.8);
+      transform: skewX(-6deg) scale(1.05);
+    }
   </style>
 </head>
 <body data-theme="concerts" class="concert-page">
@@ -231,7 +306,7 @@
     })();
   </script>
   <script src="content.js"></script>
-  <script src="player.js"></script>
-  <script src="main.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

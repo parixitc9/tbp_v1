@@ -132,7 +132,7 @@ const VideoPlayer = (() => {
     video.src = work.videoSrc || "";
     if (work.poster) video.poster = work.poster;
     titleEl.textContent = work.title || "";
-    subEl.textContent = work.artist || work.venue || work.sub || "";
+    subEl.textContent = work.artist || work.venue || work.event || work.client || work.sub || "";
     overlay.classList.add("open");
     document.body.style.overflow = "hidden";
     // attempt autoplay; if blocked, big-play button remains

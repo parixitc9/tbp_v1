@@ -83,4 +83,28 @@ const CONTENT = {
     { videoSrc: "media/concerts/concert-6.mp4", poster: "media/concerts/concert-6.jpg", title: "Under Lights",       sub: "Tour Aftermovie · 5:45",   venue: "Cross-Canada Tour" },
   ],
 
+  /* ---------- SOCIAL EVENTS (videos + photos) ----------
+     Birthdays, anniversaries, parties and family celebrations.
+     Drop files in media/social/ named social-1.mp4 / social-1.jpg, etc. */
+  social: [
+    { videoSrc: "media/social/social-1.mp4", poster: "media/social/social-1.jpg", title: "Sweet Sixteen",      sub: "Birthday Film · 2:40",   event: "Birthday", tall: true },
+    { videoSrc: "media/social/social-2.mp4", poster: "media/social/social-2.jpg", title: "Golden Anniversary", sub: "Highlights · 3:10",      event: "50th Anniversary" },
+    { videoSrc: "media/social/social-3.mp4", poster: "media/social/social-3.jpg", title: "First Birthday",     sub: "Family Film · 2:05",     event: "Birthday" },
+    { videoSrc: "media/social/social-4.mp4", poster: "media/social/social-4.jpg", title: "Engagement Party",   sub: "Celebration Reel · 1:50", event: "Engagement", tall: true },
+    { videoSrc: "media/social/social-5.mp4", poster: "media/social/social-5.jpg", title: "Retirement Bash",    sub: "Event Recap · 3:25",     event: "Retirement" },
+    { videoSrc: "media/social/social-6.mp4", poster: "media/social/social-6.jpg", title: "Graduation Day",     sub: "Highlights · 2:30",      event: "Graduation" },
+  ],
+
+  /* ---------- BRANDS (commercial work) ----------
+     Clubs, restaurants, real estate and brand campaigns.
+     Drop files in media/brands/ named brand-1.mp4 / brand-1.jpg, etc. */
+  brands: [
+    { videoSrc: "media/brands/brand-1.mp4", poster: "media/brands/brand-1.jpg", title: "Rooftop Lounge",     sub: "Brand Film · 1:30",      client: "Altitude Club", tall: true },
+    { videoSrc: "media/brands/brand-2.mp4", poster: "media/brands/brand-2.jpg", title: "Plated",             sub: "Restaurant Promo · 1:15", client: "Saffron Kitchen" },
+    { videoSrc: "media/brands/brand-3.mp4", poster: "media/brands/brand-3.jpg", title: "The Penthouse",      sub: "Real Estate Tour · 2:20", client: "Skyline Realty" },
+    { videoSrc: "media/brands/brand-4.mp4", poster: "media/brands/brand-4.jpg", title: "Night Shift",        sub: "Club Aftermovie · 2:00",  client: "Pulse Nightclub", tall: true },
+    { videoSrc: "media/brands/brand-5.mp4", poster: "media/brands/brand-5.jpg", title: "Farm to Table",      sub: "Food Reel · 1:05",        client: "Maple & Oak" },
+    { videoSrc: "media/brands/brand-6.mp4", poster: "media/brands/brand-6.jpg", title: "Modern Living",      sub: "Property Showcase · 3:00", client: "Urban Estates" },
+  ],
+
 };

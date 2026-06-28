@@ -18,70 +18,37 @@ const I = {
   heart: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>',
   disc:  '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>',
   mic:   '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/></svg>',
+  party: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.8 11.3 2 22l10.7-3.79"/><path d="M4 3h.01M22 8h.01M15 2h.01M22 20h.01"/><path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L12 14l4.5 4.5 4.04-1.95c.84-.16 1.44-.9 1.44-1.76v-.38c0-.88.77-1.55 1.63-1.45a2.9 2.9 0 0 0 3.12-1.96L22 2Z"/></svg>',
+  brand: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg>',
 };
 
 /* ---------- DATA ----------
-   Swap media: replace `src` (photos) or `videoSrc`/`poster` (videos)
-   with the client's hosted URLs. Leave "" to fall back to gradient. */
-const WEDDING_PHOTOS = [
-  { id:1, title:"Harleen & Arjun", sub:"Anand Karaj · Toronto", hue:"from-rose-200 to-amber-100", tall:true, src:"https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&q=80" },
-  { id:2, title:"Simran & Jai", sub:"Lakeside Vows", hue:"from-amber-200 to-rose-100", src:"https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80" },
-  { id:3, title:"Noor & Kabir", sub:"Golden Hour Portraits", hue:"from-orange-200 to-pink-100", src:"https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80" },
-  { id:4, title:"Gurleen & Veer", sub:"Mehndi Morning", hue:"from-rose-200 to-orange-100", tall:true, src:"https://images.unsplash.com/photo-1604017011826-d3b4c23f8914?w=800&q=80" },
-  { id:5, title:"Anaya & Rohan", sub:"Reception Glow", hue:"from-amber-200 to-rose-200", src:"https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80" },
-  { id:6, title:"Pavneet & Sahil", sub:"First Look", hue:"from-pink-200 to-amber-100", src:"https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=800&q=80" },
+   All content now lives in content.js (the CONTENT object), which the
+   client edits. Here we just read from it and add an auto id + a rotating
+   gradient so any item with a missing image still looks intentional. */
+const GRADIENTS = [
+  "from-rose-200 to-amber-100", "from-amber-200 to-rose-100",
+  "from-orange-200 to-pink-100", "from-rose-200 to-orange-100",
+  "from-amber-200 to-rose-200", "from-pink-200 to-amber-100",
 ];
+function prep(list) {
+  return (list || []).map((item, i) => ({ id: i + 1, hue: GRADIENTS[i % GRADIENTS.length], ...item }));
+}
 
-const WEDDING_VIDEOS = [
-  { id:1, title:"The Anand Karaj Film", sub:"Cinematic Feature · 5:20", poster:"https://images.unsplash.com/photo-1610234198916-583af5beb27e?w=800&q=80", videoSrc:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" },
-  { id:2, title:"Simran + Jai Teaser", sub:"Wedding Teaser · 1:45", poster:"https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&q=80", videoSrc:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" },
-  { id:3, title:"A Punjabi Celebration", sub:"Highlights · 3:30", poster:"https://images.unsplash.com/photo-1622842934240-eb3d886abdec?w=800&q=80", videoSrc:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" },
-];
-
-const WEDDING_STORIES = [
-  { id:1, couple:"Harleen & Arjun", place:"Toronto, Ontario", date:"August 2025",
-    excerpt:"Two families, two cities, one unforgettable Anand Karaj by the lake.",
-    src:"https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&q=80",
-    body:"When Harleen and Arjun first reached out, they told us they wanted their wedding to feel like a warm embrace — not a production. Their Anand Karaj unfolded on a misty August morning by Lake Ontario, the Guru Granth Sahib framed by marigold and ivory roses. We followed the laughter through the Milni, the quiet tears during the laavan, and the riot of colour as the dhol kicked in. What stayed with us most was the moment Harleen's grandmother pressed her hand to Arjun's cheek — unscripted, unrepeatable, exactly the kind of frame we live for." },
-  { id:2, couple:"Simran & Jai", place:"Vancouver, BC", date:"June 2025",
-    excerpt:"A lakeside ceremony where the light did half our work for us.",
-    src:"https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80",
-    body:"Simran and Jai are golden-hour people. They planned their entire day around the light — a late-afternoon ceremony so the sun would sit low and amber over the water during their vows. The result was a film that almost grades itself. Between the heartfelt speeches and a surprise choreographed entrance from the bridal party, their celebration reminded us why we do this: the best weddings aren't perfect, they're alive." },
-  { id:3, couple:"Noor & Kabir", place:"Calgary, Alberta", date:"September 2025",
-    excerpt:"Mountain backdrops, mehndi nights, and a love story years in the making.",
-    src:"https://images.unsplash.com/photo-1604017011826-d3b4c23f8914?w=800&q=80",
-    body:"College sweethearts turned partners for life, Noor and Kabir wanted their story told honestly — the in-jokes, the comfortable silences, the way they finish each other's sentences. We spent three days with them across mehndi, sangeet, and the ceremony itself, with the Rockies standing guard in the distance. Their wedding film is less a highlight reel and more a love letter." },
-];
-
-const MUSIC_WORKS = [
-  { id:1, title:"Echoes — Full Album", sub:"Album Visuals · 4:10", artist:"Maninder Gill", tall:true, poster:"https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80", videoSrc:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" },
-  { id:2, title:"Midnight City", sub:"Music Video · 3:48", artist:"The Nightingales", poster:"https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=800&q=80", videoSrc:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" },
-  { id:3, title:"Roots", sub:"Acoustic Session · 5:02", artist:"Simar Kaur", poster:"https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=800&q=80", videoSrc:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" },
-  { id:4, title:"Neon Heart", sub:"Single Visual · 2:55", artist:"Ravi & Co", tall:true, poster:"https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80", videoSrc:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" },
-  { id:5, title:"Sundown", sub:"Lyric Video · 3:20", artist:"Aman Dhillon", poster:"https://images.unsplash.com/photo-1483393458019-411bc6bd104e?w=800&q=80", videoSrc:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" },
-  { id:6, title:"Velvet", sub:"Studio Film · 4:33", artist:"Noor Project", poster:"https://images.unsplash.com/photo-1501386761578-eac5c94b800a?w=800&q=80", videoSrc:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" },
-];
-
-const CONCERT_WORKS = [
-  { id:1, title:"Arena Live", sub:"Full Concert Film · 8:40", venue:"Rogers Arena", tall:true, poster:"https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800&q=80", videoSrc:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" },
-  { id:2, title:"Festival Mainstage", sub:"Highlights · 3:15", venue:"Toronto Fest", poster:"https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&q=80", videoSrc:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" },
-  { id:3, title:"Acoustic Night", sub:"Live Session · 4:50", venue:"The Vault", poster:"https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=800&q=80", videoSrc:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" },
-  { id:4, title:"Bhangra Beats Live", sub:"Crowd Reel · 2:30", venue:"Surrey Live", tall:true, poster:"https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=800&q=80", videoSrc:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" },
-  { id:5, title:"Encore", sub:"Multi-cam Edit · 6:12", venue:"Scotiabank", poster:"https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&q=80", videoSrc:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4" },
-  { id:6, title:"Under Lights", sub:"Tour Aftermovie · 5:45", venue:"Cross-Canada Tour", poster:"https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80", videoSrc:"https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4" },
-];
-
-const DATASETS = {
-  weddingPhotos: WEDDING_PHOTOS,
-  weddingVideos: WEDDING_VIDEOS,
-  music: MUSIC_WORKS,
-  concerts: CONCERT_WORKS,
-};
+const WEDDING_PHOTOS = prep(CONTENT.weddingPhotos);
+const WEDDING_VIDEOS = prep(CONTENT.weddingVideos);
+const WEDDING_STORIES = prep(CONTENT.weddingStories);
+const MUSIC_WORKS = prep(CONTENT.music);
+const CONCERT_WORKS = prep(CONTENT.concerts);
+const SOCIAL_WORKS = prep(CONTENT.social);
+const BRAND_WORKS = prep(CONTENT.brands);
 
 const SERVICES = [
   { id:"wedding", label:"Wedding", icon:I.heart },
   { id:"music", label:"Music Album", icon:I.disc },
   { id:"concert", label:"Concert", icon:I.mic },
+  { id:"social", label:"Social Event", icon:I.party },
+  { id:"brand", label:"Brand / Commercial", icon:I.brand },
 ];
 const BUDGETS = ["Under $3,000", "$3,000 – $6,000", "$6,000 – $10,000", "$10,000+"];
 const SCALES = ["Intimate (under 50)", "Mid-size (50–150)", "Large (150–300)", "Grand (300+)"];
@@ -106,12 +73,12 @@ function renderGrid(containerId, items, kind) {
   if (!el) return;
   el.innerHTML = items.map(w => {
     const media = w.src || w.poster;
-    const meta = w.artist || w.venue || w.sub;
-    const subLine = (w.artist || w.venue) ? `<p class="sub">${w.sub}</p>` : "";
+    const meta = w.artist || w.venue || w.event || w.client || w.sub;
+    const subLine = (w.artist || w.venue || w.event || w.client) ? `<p class="sub">${w.sub}</p>` : "";
     return `
       <div class="work-card ${w.tall ? "tall" : ""}" style="${gradientStyle(w.hue)}"
            data-kind="${kind}" data-id="${w.id}">
-        ${media ? `<img src="${media}" alt="${w.title}" loading="lazy">` : ""}
+        ${media ? `<img src="${media}" alt="${w.title}" loading="lazy" onerror="this.style.display='none'">` : ""}
         <div class="work-card-shade"></div>
         ${kind === "video" ? `<div class="work-card-play"><div class="play-btn">${I.play}</div></div>` : ""}
         <div class="work-card-caption">
@@ -139,7 +106,7 @@ function renderStories(containerId) {
   if (!el) return;
   el.innerHTML = WEDDING_STORIES.map((s, i) => `
     <button class="story ${i % 2 ? "rev" : ""}" data-id="${s.id}">
-      <div class="story-img">${s.src ? `<img src="${s.src}" alt="${s.couple}" loading="lazy">` : ""}</div>
+      <div class="story-img">${s.src ? `<img src="${s.src}" alt="${s.couple}" loading="lazy" onerror="this.style.display='none'">` : ""}</div>
       <div class="story-body">
         <span class="place">${s.place} · ${s.date}</span>
         <h3 class="serif">${s.couple}</h3>
@@ -167,7 +134,7 @@ function openStory(s) {
     <div class="modal story-modal" onclick="event.stopPropagation()">
       <button class="modal-close" onclick="document.getElementById('storyModal').classList.remove('open')">${I.close}</button>
       <div class="story-modal-img" style="${gradientStyle(s.hue)}">
-        ${s.src ? `<img src="${s.src}" alt="${s.couple}">` : ""}
+        ${s.src ? `<img src="${s.src}" alt="${s.couple}" onerror="this.style.display='none'">` : ""}
       </div>
       <div class="modal-pad">
         <span class="place">${s.place} · ${s.date}</span>
@@ -339,5 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("weddingVideos")) renderGrid("weddingVideos", WEDDING_VIDEOS, "video");
   if (document.getElementById("musicGrid"))     renderGrid("musicGrid", MUSIC_WORKS, "video");
   if (document.getElementById("concertGrid"))   renderGrid("concertGrid", CONCERT_WORKS, "video");
+  if (document.getElementById("socialGrid"))    renderGrid("socialGrid", SOCIAL_WORKS, "video");
+  if (document.getElementById("brandsGrid"))    renderGrid("brandsGrid", BRAND_WORKS, "video");
   if (document.getElementById("storyList"))     renderStories("storyList");
 });

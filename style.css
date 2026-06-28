@@ -39,6 +39,12 @@ img { display: block; max-width: 100%; }
   --amber-50: #fffbeb; --amber-100: #fef3c7; --amber-200: #fde68a;
   --violet-400: #a78bfa; --violet-500: #8b5cf6;
   --orange-400: #fb923c; --orange-500: #f97316;
+  /* social theme (festive teal / coral) */
+  --teal-400: #2dd4bf; --teal-500: #14b8a6; --teal-600: #0d9488;
+  --coral-400: #fb7185; --coral-500: #f43f5e;
+  /* brands theme (emerald / gold, premium dark) */
+  --emerald-400: #34d399; --emerald-500: #10b981; --emerald-600: #059669;
+  --gold-400: #d4b25f; --gold-500: #c79a3f;
 }
 
 /* ---------- FILM GRAIN ---------- */
@@ -78,23 +84,35 @@ section { position: relative; }
 
 /* default (home/dark) nav theme */
 .nav { color: #fff; }
+.nav-logo { color: var(--stone-100); }
+
+/* --- DARK-themed pages: home, music, concerts, brands --- */
 body[data-theme="home"] .nav.solid,
 body[data-theme="music"] .nav.solid,
-body[data-theme="concerts"] .nav.solid {
+body[data-theme="concerts"] .nav.solid,
+body[data-theme="brands"] .nav.solid {
   background: rgba(12,10,9,0.9); border-color: rgba(217,119,6,0.1);
 }
-.nav-logo { color: var(--stone-100); }
+
+/* --- LIGHT-themed pages: wedding, social --- */
 body[data-theme="wedding"] .nav.solid {
   background: rgba(255,241,242,0.9); border-color: rgba(254,205,211,0.4);
 }
-body[data-theme="wedding"] .nav-logo { color: var(--stone-800); }
-body[data-theme="wedding"] .nav-link { color: var(--stone-500); }
+body[data-theme="social"] .nav.solid {
+  background: rgba(240,253,250,0.92); border-color: rgba(45,212,191,0.3);
+}
+body[data-theme="wedding"] .nav-logo,
+body[data-theme="social"] .nav-logo { color: var(--stone-800); }
+body[data-theme="wedding"] .nav-link,
+body[data-theme="social"] .nav-link { color: var(--stone-500); }
 
 /* accent + button per theme */
 body[data-theme="home"] .nav-link.active, body[data-theme="home"] .nav-link:hover { color: var(--amber-400); }
 body[data-theme="wedding"] .nav-link.active, body[data-theme="wedding"] .nav-link:hover { color: var(--amber-700); }
 body[data-theme="music"] .nav-link.active, body[data-theme="music"] .nav-link:hover { color: var(--violet-400); }
 body[data-theme="concerts"] .nav-link.active, body[data-theme="concerts"] .nav-link:hover { color: var(--orange-400); }
+body[data-theme="social"] .nav-link.active, body[data-theme="social"] .nav-link:hover { color: var(--teal-600); }
+body[data-theme="brands"] .nav-link.active, body[data-theme="brands"] .nav-link:hover { color: var(--gold-400); }
 
 body[data-theme="home"] .nav-cta { background: var(--amber-500); color: var(--stone-950); }
 body[data-theme="home"] .nav-cta:hover { background: var(--amber-400); }
@@ -104,8 +122,13 @@ body[data-theme="music"] .nav-cta { background: var(--violet-500); color: #fff; 
 body[data-theme="music"] .nav-cta:hover { background: var(--violet-400); }
 body[data-theme="concerts"] .nav-cta { background: var(--orange-500); color: #fff; }
 body[data-theme="concerts"] .nav-cta:hover { background: var(--orange-400); }
+body[data-theme="social"] .nav-cta { background: var(--teal-500); color: #fff; }
+body[data-theme="social"] .nav-cta:hover { background: var(--teal-400); }
+body[data-theme="brands"] .nav-cta { background: var(--gold-500); color: var(--stone-950); }
+body[data-theme="brands"] .nav-cta:hover { background: var(--gold-400); }
 
-body[data-theme="wedding"] .nav-burger { color: var(--stone-800); }
+body[data-theme="wedding"] .nav-burger,
+body[data-theme="social"] .nav-burger { color: var(--stone-800); }
 
 /* ---------- BUTTONS ---------- */
 .btn {
@@ -126,6 +149,24 @@ body[data-theme="wedding"] .nav-burger { color: var(--stone-800); }
 .btn-orange:hover { background: var(--orange-400); }
 .btn-icon svg { transition: transform 0.2s; }
 .btn:hover .btn-icon svg { transform: translateX(4px); }
+
+/* new theme buttons */
+.btn-teal { background: var(--teal-500); color: #fff; }
+.btn-teal:hover { background: var(--teal-400); }
+.btn-gold { background: var(--gold-500); color: var(--stone-950); }
+.btn-gold:hover { background: var(--gold-400); }
+
+/* footer "Start a Project" button adapts to the page theme */
+body[data-theme="wedding"] .footer .btn-amber { background: var(--stone-800); color: var(--rose-50); }
+body[data-theme="wedding"] .footer .btn-amber:hover { background: var(--stone-900); }
+body[data-theme="music"] .footer .btn-amber { background: var(--violet-500); color: #fff; }
+body[data-theme="music"] .footer .btn-amber:hover { background: var(--violet-400); }
+body[data-theme="concerts"] .footer .btn-amber { background: var(--orange-500); color: #fff; }
+body[data-theme="concerts"] .footer .btn-amber:hover { background: var(--orange-400); }
+body[data-theme="social"] .footer .btn-amber { background: var(--teal-500); color: #fff; }
+body[data-theme="social"] .footer .btn-amber:hover { background: var(--teal-400); }
+body[data-theme="brands"] .footer .btn-amber { background: var(--gold-500); color: var(--stone-950); }
+body[data-theme="brands"] .footer .btn-amber:hover { background: var(--gold-400); }
 
 /* ---------- HERO (home) ---------- */
 .hero {
@@ -289,6 +330,40 @@ body[data-theme="wedding"] .nav-burger { color: var(--stone-800); }
   padding-top: 2rem; border-top: 1px solid var(--stone-900); }
 .footer-bottom .copy { color: var(--stone-600); font-size: 0.75rem; }
 
+/* --- per-theme footer: accent + border to match the page --- */
+/* DARK pages keep the dark footer, only the accent (border + link hover) changes */
+body[data-theme="music"] .footer { border-top-color: rgba(139,92,246,0.15); }
+body[data-theme="music"] .footer-col a:hover { color: var(--violet-400); }
+body[data-theme="concerts"] .footer { border-top-color: rgba(212,255,0,0.18); }
+body[data-theme="concerts"] .footer-col a:hover { color: var(--orange-400); }
+body[data-theme="brands"] .footer { border-top-color: rgba(199,154,63,0.22); }
+body[data-theme="brands"] .footer-col a:hover { color: var(--gold-400); }
+
+/* LIGHT pages get a light footer that matches the page background */
+body[data-theme="wedding"] .footer {
+  background: var(--rose-100); border-top: 1px solid var(--rose-200);
+}
+body[data-theme="wedding"] .footer-logo { color: var(--stone-800); }
+body[data-theme="wedding"] .footer p,
+body[data-theme="wedding"] .footer-col a,
+body[data-theme="wedding"] .footer-col span { color: var(--stone-600); }
+body[data-theme="wedding"] .footer h4 { color: var(--stone-700); }
+body[data-theme="wedding"] .footer-col a:hover { color: var(--amber-700); }
+body[data-theme="wedding"] .footer-bottom { border-top-color: var(--rose-200); }
+body[data-theme="wedding"] .footer-bottom .copy { color: var(--stone-500); }
+
+body[data-theme="social"] .footer {
+  background: #ccfbf1; border-top: 1px solid rgba(45,212,191,0.4);
+}
+body[data-theme="social"] .footer-logo { color: var(--stone-800); }
+body[data-theme="social"] .footer p,
+body[data-theme="social"] .footer-col a,
+body[data-theme="social"] .footer-col span { color: var(--stone-600); }
+body[data-theme="social"] .footer h4 { color: var(--stone-700); }
+body[data-theme="social"] .footer-col a:hover { color: var(--teal-600); }
+body[data-theme="social"] .footer-bottom { border-top-color: rgba(45,212,191,0.4); }
+body[data-theme="social"] .footer-bottom .copy { color: var(--stone-500); }
+
 /* ---------- PROJECT MODAL ---------- */
 .modal-overlay {
   position: fixed; inset: 0; z-index: 70; display: none;
@@ -429,6 +504,65 @@ textarea.field { resize: none; }
     margin-top: 1rem; backdrop-filter: blur(12px); border-top: 1px solid rgba(217,119,6,0.1); }
   .nav-mobile.open { display: flex; }
   body[data-theme="home"] .nav-mobile, body[data-theme="music"] .nav-mobile,
-  body[data-theme="concerts"] .nav-mobile { background: rgba(12,10,9,0.95); }
+  body[data-theme="concerts"] .nav-mobile, body[data-theme="brands"] .nav-mobile { background: rgba(12,10,9,0.95); }
   body[data-theme="wedding"] .nav-mobile { background: rgba(255,241,242,0.95); }
+  body[data-theme="social"] .nav-mobile { background: rgba(240,253,250,0.96); }
 }
+
+/* ============================================================
+   SOCIAL PAGE THEME — festive, warm, light (teal + coral)
+   Birthdays, anniversaries, parties
+   ============================================================ */
+body.social-page { background: var(--rose-50); color: var(--stone-700); }
+.soc-hero {
+  background: linear-gradient(to bottom, #f0fdfa, #fff1f2, #f0fdfa);
+}
+.soc-hero .glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(45,212,191,0.22), transparent 60%);
+}
+.soc-hero h1 { color: var(--stone-800); }
+.soc-hero h1 .accent { color: var(--coral-500); font-style: italic; }
+.soc-hero p { color: var(--stone-600); }
+.soc-label { color: var(--teal-600); }
+.soc-section { background: linear-gradient(to bottom, #f0fdfa, #fff1f2); }
+.soc-section h2 { color: var(--stone-800); }
+body.social-page .play-btn { background: var(--teal-500); color: #fff; }
+body.social-page .work-card { border-color: rgba(45,212,191,0.25); }
+.soc-confetti { padding: 3rem 0; border-top: 1px solid rgba(45,212,191,0.2);
+  border-bottom: 1px solid rgba(45,212,191,0.2); overflow: hidden; background: #fff1f2; }
+.soc-confetti-track { display: flex; gap: 3rem; white-space: nowrap;
+  font-size: 2.5rem; font-weight: 700; color: rgba(20,184,166,0.35);
+  width: max-content; animation: marquee 22s linear infinite; }
+.soc-cta { background: var(--rose-100); }
+.soc-cta h2 { color: var(--stone-800); }
+.soc-cta p { color: var(--stone-600); }
+
+/* ============================================================
+   BRANDS PAGE THEME — premium, dark, commercial (emerald + gold)
+   Clubs, restaurants, real estate
+   ============================================================ */
+body.brands-page { background: #0c0a09; }
+.brd-hero {
+  background: linear-gradient(to bottom, #0c0a09, rgba(5,150,105,0.18), #0c0a09);
+}
+.brd-hero .glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(212,178,95,0.18), transparent 60%);
+}
+.brd-hero h1 { color: var(--stone-50); }
+.brd-hero h1 .accent { color: var(--gold-400); font-style: italic; }
+.brd-hero p { color: var(--stone-400); }
+.brd-label { color: var(--gold-400); }
+.brd-section h2 { color: var(--stone-50); }
+body.brands-page .play-btn { background: var(--gold-500); color: var(--stone-950); }
+body.brands-page .work-card { border-color: rgba(212,178,95,0.2); }
+body.brands-page .work-card:hover { border-color: rgba(212,178,95,0.5); }
+.brd-strip { padding: 3rem 0; border-top: 1px solid rgba(16,185,129,0.15);
+  border-bottom: 1px solid rgba(16,185,129,0.15); overflow: hidden; }
+.brd-strip-track { display: flex; gap: 3rem; white-space: nowrap;
+  font-size: 3rem; font-weight: 700; color: rgba(212,178,95,0.2);
+  width: max-content; animation: marquee 24s linear infinite; }
+.brd-cta { background: linear-gradient(to bottom, #0c0a09, rgba(5,150,105,0.15)); }
+.brd-cta h2 { color: var(--stone-50); }
+.brd-cta p { color: var(--stone-400); }

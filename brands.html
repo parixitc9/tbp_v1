@@ -4,8 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>document.documentElement.classList.add(("startViewTransition" in document) ? "vt-native" : "vt-fallback");</script>
   <title>Brands — The Brown Print</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/tbp-transition.css" />
+  <script id="tbp-arriving-init">try{if(sessionStorage.getItem("tbp-wipe"))document.documentElement.classList.add("tbp-arriving");}catch(e){}</script>
 </head>
 
 <body data-theme="brands" class="brands-page">
@@ -152,8 +155,9 @@
     })();
   </script>
   <script src="content.js"></script>
-  <script src="player.js"></script>
-  <script src="main.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/tbp-transition.js"></script>
 </body>
 
 </html>

@@ -15,7 +15,8 @@
   <title>Weddings — The Brown Print</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/tbp-transition.css" />
-  <script id="tbp-arriving-init">try{if(sessionStorage.getItem("tbp-wipe"))document.documentElement.classList.add("tbp-arriving");}catch(e){}</script>
+  <script
+    id="tbp-arriving-init">try { if (sessionStorage.getItem("tbp-wipe")) document.documentElement.classList.add("tbp-arriving"); } catch (e) { }</script>
   <style>
     /* page-local: wedding light theme overrides */
     body.wedding-page {
@@ -92,10 +93,11 @@
     /* ==============================================
        SCROLL ANIMATION STYLING INTEGRATION
        ============================================== */
-    
+
     /* Intro scroll-trigger block */
     .intro-container {
-      height: 300vh; /* Scroll height for animation play + fade */
+      height: 300vh;
+      /* Scroll height for animation play + fade */
       position: relative;
       background-color: var(--stone-950);
       margin-top: 0;
@@ -326,10 +328,24 @@
     }
 
     @keyframes scrollPulse {
-      0% { opacity: 0; transform: translate(-50%, 0); }
-      20% { opacity: 1; }
-      60% { opacity: 0.1; transform: translate(-50%, 14px); }
-      100% { opacity: 0; transform: translate(-50%, 0); }
+      0% {
+        opacity: 0;
+        transform: translate(-50%, 0);
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      60% {
+        opacity: 0.1;
+        transform: translate(-50%, 14px);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(-50%, 0);
+      }
     }
 
     /* Poetic floating text styles */
@@ -373,6 +389,7 @@
       .hero-overlay-content h1 {
         font-size: 2.5rem;
       }
+
       .poetic-text {
         font-size: 1.75rem;
       }
@@ -434,7 +451,8 @@
 
       <!-- Editorial Floating Poetic Text -->
       <div class="editorial-overlays">
-        <div class="poetic-text" id="text-1">A story of warmth, colour, and <span class="gold">quiet emotion</span>.</div>
+        <div class="poetic-text" id="text-1">A story of warmth, colour, and <span class="gold">quiet emotion</span>.
+        </div>
         <div class="poetic-text" id="text-2">From the sacred rituals to the <span class="gold">last dance</span>.</div>
         <div class="poetic-text" id="text-3">Moments preserved to live <span class="gold">forever</span>.</div>
       </div>
@@ -462,7 +480,7 @@
 
   <!-- ============ MAIN CONTENT CONTAINER ============ -->
   <div class="main-content" id="main-content">
-    
+
     <!-- ============ PHOTOGRAPHY (MOMENTS, FRAMED) ============ -->
     <section class="work-section wed-section wed-photos" id="moments-framed-section">
       <div class="wrap">
@@ -581,11 +599,11 @@
     document.addEventListener("DOMContentLoaded", () => {
       const canvas = document.getElementById("scroll-canvas");
       const context = canvas.getContext("2d");
-      
+
       const loaderOverlay = document.getElementById("loader");
       const progressFill = document.getElementById("progress-fill");
       const loaderPercent = document.getElementById("loader-percent");
-      
+
       const introContainer = document.getElementById("intro-container");
       const heroOverlay = document.getElementById("hero-overlay");
       const scrollPrompt = document.getElementById("scroll-prompt");
@@ -601,14 +619,14 @@
       // Frame source config — points at the frame sequence in your repo.
       // If your frames live elsewhere, change FRAME_DIR / frameCount only.
       const FRAME_DIR = "ezgif-112f62a00cb0e067-jpg";
-      const frameCount = 206;
+      const frameCount = 70;
       const images = [];
       let loadedCount = 0;
 
       // Construct file paths dynamically (ezgif-frame-001.jpg -> ezgif-frame-206.jpg)
       const getFramePath = (index) => {
         const paddedIndex = String(index).padStart(3, '0');
-        return `${FRAME_DIR}/ezgif-frame-${paddedIndex}.jpg`;
+        return `${FRAME_DIR}/ezgif-frame-${paddedIndex}.png`;
       };
 
       // Preloading process
@@ -669,10 +687,10 @@
         }, 800);
 
         animationStarted = true;
-        
+
         // Handle canvas sizing and draw initial frame
         resizeCanvas();
-        
+
         // Start scroll render loops
         requestAnimationFrame(animateLoop);
       }
@@ -680,7 +698,7 @@
       // Scrolling Phase & Opacity Controller
       window.addEventListener("scroll", () => {
         if (!animationStarted) return;
-        
+
         const scrollTop = window.scrollY;
         const vh = window.innerHeight;
 
@@ -718,16 +736,16 @@
           targetFrame = fraction * (frameCount - 1);
           introContainer.style.opacity = "1";
           introContainer.style.pointerEvents = "auto";
-        } 
+        }
         // Transition Fade phase (220vh to 300vh): Couple appears in camera lens and is held
         else if (scrollTop > animEndScroll && scrollTop <= introEndScroll) {
           targetFrame = frameCount - 1; // Freeze on final frame
           const fadeFraction = (scrollTop - animEndScroll) / (introEndScroll - animEndScroll);
-          
+
           // Easing opacity of the intro frame to reveal Photography section
           introContainer.style.opacity = (1 - fadeFraction).toString();
           introContainer.style.pointerEvents = "auto";
-        } 
+        }
         // Fully scrolled past: hide container completely so click events pass to content below
         else {
           targetFrame = frameCount - 1;
@@ -821,7 +839,7 @@
         }
 
         renderFrame();
-        
+
         // Update poetic texts based on current animation frame index
         const currentFraction = currentFrame / (frameCount - 1);
         updateSubtitles(currentFraction);

@@ -7,8 +7,6 @@
   <script>document.documentElement.classList.add(("startViewTransition" in document) ? "vt-native" : "vt-fallback");</script>
   <title>The Brown Print — Cinematic Weddings, Music & Concert Films</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/tbp-transition.css" />
-  <script id="tbp-arriving-init">try{if(sessionStorage.getItem("tbp-wipe"))document.documentElement.classList.add("tbp-arriving");}catch(e){}</script>
 </head>
 
 <body data-theme="home">
@@ -39,15 +37,24 @@
       <a href="wedding.html" class="nav-link">Weddings</a>
       <a href="music.html" class="nav-link">Music</a>
       <a href="concerts.html" class="nav-link">Concerts</a>
-        <a href="social.html" class="nav-link">Social</a>
-        <a href="brands.html" class="nav-link">Brands</a>
+      <a href="social.html" class="nav-link">Social</a>
+      <a href="brands.html" class="nav-link">Brands</a>
       <button class="nav-cta" onclick="openProject()">Start a Project</button>
     </div>
   </nav>
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-bg">
+      <!-- Background image. To use a video instead, delete/comment the <img> and uncomment the <video> below. -->
+      <!-- <img class="hero-media" src="media/TBP_Home_Hero.png" alt="" aria-hidden="true" /> -->
+
+      <video class="hero-media" autoplay muted loop playsinline poster="media/tbp_home_hero.jpg">
+        <source src="media/TBP_Home_Hero_1.mp4" type="video/mp4" />
+      </video>
+
+      <div class="hero-bg-overlay"></div>
+    </div>
     <div class="hero-glow"></div>
     <div class="hero-frames" id="heroFrames"></div>
     <div class="hero-content">
@@ -157,7 +164,8 @@
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5.8 11.3 2 22l10.7-3.79" />
                 <path d="M4 3h.01M22 8h.01M15 2h.01M22 20h.01" />
-                <path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L12 14l4.5 4.5 4.04-1.95c.84-.16 1.44-.9 1.44-1.76v-.38c0-.88.77-1.55 1.63-1.45a2.9 2.9 0 0 0 3.12-1.96L22 2Z" />
+                <path
+                  d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L12 14l4.5 4.5 4.04-1.95c.84-.16 1.44-.9 1.44-1.76v-.38c0-.88.77-1.55 1.63-1.45a2.9 2.9 0 0 0 3.12-1.96L22 2Z" />
               </svg></span>
             <h3 class="serif">Social Events</h3>
             <p>Birthdays, anniversaries &amp; celebrations</p>
@@ -250,7 +258,6 @@
   <script src="content.js"></script>
   <script src="js/player.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/tbp-transition.js"></script>
 </body>
 
 </html>
